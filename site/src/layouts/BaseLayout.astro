@@ -6,7 +6,8 @@ const pageTitle = title ? `${title} | PolicyPulse` : "PolicyPulse";
 const pageDescription =
   description || "Official-source financial policy and macro data pulse.";
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const withBase = (path) => `${normalizedBaseUrl}${String(path ?? "").replace(/^\/+/, "")}`;
 ---
 <!doctype html>
 <html lang="zh-CN">

@@ -5,7 +5,8 @@ import { getSourcesSummary, getSourceStatusMap } from "../lib/news";
 const sources = getSourcesSummary();
 const statusMap = getSourceStatusMap();
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const withBase = (path) => `${normalizedBaseUrl}${String(path ?? "").replace(/^\/+/, "")}`;
 ---
 <BaseLayout title="Sources" description="Browse official sources">
   <section class="glass-panel rounded-3xl px-6 py-8 shadow-soft">

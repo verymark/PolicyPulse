@@ -2,7 +2,8 @@
 const { current, total } = Astro.props;
 const pages = Array.from({ length: total }, (_, index) => index + 1);
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const withBase = (path) => `${normalizedBaseUrl}${String(path ?? "").replace(/^\/+/, "")}`;
 ---
 <nav class="mt-10 flex flex-wrap items-center gap-2">
   {current > 1 && (
