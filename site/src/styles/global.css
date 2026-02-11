@@ -50,3 +50,9 @@ body {
   word-break: break-word;
   hyphens: auto;
 }
+
+.page-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
