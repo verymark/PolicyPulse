@@ -97,10 +97,12 @@ Source definitions live in `crawler/sources/` (one module per source). Runtime s
 
 - China Securities Regulatory Commission (CSRC) news
   - List page: https://www.csrc.gov.cn/csrc/c100028/common_list.shtml
-- National Financial Regulatory Administration (NFRA) regulatory updates (API)
-  - API: https://www.nfra.gov.cn/cbircweb/DocInfo/SelectDocByItemIdAndChild
 - Ministry of Finance (MOF) policy releases
   - List page: https://www.mof.gov.cn/zhengwuxinxi/zhengcefabu/
+- Bank for International Settlements (BIS) press releases (RSS)
+  - Feed: https://www.bis.org/doclist/all_pressrels.rss
+- International Energy Agency (IEA) news
+  - List page: https://www.iea.org/news
 - State Administration of Foreign Exchange (SAFE) news
   - List page: https://www.safe.gov.cn/safe/whxw/index.html
 - People's Bank of China (PBoC) news
@@ -113,10 +115,6 @@ Source definitions live in `crawler/sources/` (one module per source). Runtime s
 - Federal Reserve press releases (RSS)
   - Feed: https://www.federalreserve.gov/feeds/press_all.xml
   - Source index: https://www.federalreserve.gov/feeds/default.htm
-- FRED release dates (API)
-  - API: https://api.stlouisfed.org/fred/releases/dates
-- U.S. Bureau of Labor Statistics (BLS) unemployment series (API)
-  - API: https://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000
 - National Bureau of Statistics of China (NBS) data releases (HTML list)
   - List page: https://www.stats.gov.cn/sj/zxfb/
   - Rationale: official “数据发布” list with stable list entries and dates
@@ -157,6 +155,29 @@ Some sources require API keys or a compliant User-Agent. Configure these in GitH
 - `SEC_USER_AGENT`
 
 If a required secret is missing, the crawler will skip that source and continue.
+
+## API keys / How to obtain
+
+- FRED (`FRED_API_KEY`): https://fred.stlouisfed.org/docs/api/api_key.html
+- BLS (`BLS_API_KEY`): https://www.bls.gov/developers/ (registration: https://data.bls.gov/registrationEngine/)
+- BEA (`BEA_API_KEY`): https://apps.bea.gov/API/signup/
+- EIA (`EIA_API_KEY`): https://www.eia.gov/opendata/register.php
+- SEC User-Agent (`SEC_USER_AGENT`): must include contact info per SEC policy
+  - Policy: https://www.sec.gov/os/accessing-edgar-data
+
+## Disabled sources (API-first in this iteration)
+
+- NFRA, FRED, BLS, BEA, EIA, Treasury, SEC EDGAR, IMF/World Bank/OECD: disabled because this iteration skips API-based ingestion. Planned next step is to wire each API once keys/UA are available and rate limits are understood.
+  - NFRA list API: https://www.nfra.gov.cn/cbircweb/DocInfo/SelectDocByItemIdAndChild
+  - Treasury API docs: https://fiscaldata.treasury.gov/api-documentation/
+  - SEC EDGAR API docs: https://www.sec.gov/edgar/sec-api-documentation
+  - IMF SDMX REST: https://dataservices.imf.org/REST/SDMX_JSON.svc/
+  - World Bank API: https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation
+  - OECD SDMX-JSON: https://stats.oecd.org/SDMX-JSON/
+
+## Disabled sources (HTML/RSS not stable)
+
+- SSE, SZSE, BSE: primary disclosure pages are JS-rendered and rely on internal JSON endpoints. We avoid headless browsers in this repo, so these stay disabled until stable RSS or documented JSON endpoints are added.
 
 ## Enable GitHub Pages
 

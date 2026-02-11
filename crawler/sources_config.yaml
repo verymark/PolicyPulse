@@ -79,7 +79,7 @@ sources:
       language: "zh-CN"
       region: "CN"
   nfra:
-    enabled: true
+    enabled: false
     notes: "NFRA dynamic list via official API (监管动态)"
     config:
       endpoint: "https://www.nfra.gov.cn/cbircweb/DocInfo/SelectDocByItemIdAndChild"
@@ -129,7 +129,7 @@ sources:
     enabled: false
     config: {}
   fred:
-    enabled: true
+    enabled: false
     config:
       endpoint: "https://api.stlouisfed.org/fred/releases/dates"
       params:
@@ -156,7 +156,7 @@ sources:
       language: "en"
       region: "US"
   bls:
-    enabled: true
+    enabled: false
     config:
       endpoint: "https://api.bls.gov/publicAPI/v1/timeseries/data/LNS14000000"
       params:
@@ -214,8 +214,14 @@ sources:
       language: "en"
       region: "UK"
   bis:
-    enabled: false
-    config: {}
+    enabled: true
+    notes: "Official BIS RSS feed list: https://www.bis.org/rss/index.htm"
+    config:
+      feed_urls:
+        - "https://www.bis.org/doclist/all_pressrels.rss"
+      content_type: "news"
+      language: "en"
+      region: "Global"
   imf_worldbank_oecd:
     enabled: false
     config: {}
@@ -229,5 +235,18 @@ sources:
       items_path: ""
       field_map: {}
   iea:
-    enabled: false
-    config: {}
+    enabled: true
+    notes: "IEA news list: https://www.iea.org/news"
+    config:
+      list_urls:
+        - "https://www.iea.org/news"
+      base_url: "https://www.iea.org/"
+      item_selector: "article"
+      title_selector: "h5.m-news-detailed-listing__title"
+      url_selector: "a.m-news-detailed-listing__link"
+      published_selector: "div.m-news-detailed-listing__date"
+      published_format: "%d %B %Y"
+      published_timezone: "Europe/Paris"
+      content_type: "news"
+      language: "en"
+      region: "Global"
