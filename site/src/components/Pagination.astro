@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const withBase = (path) => `${normalizedBaseUrl}${String(path ?? "").replace(/^\/+/, "")}`;
 ---
-<nav class="mt-6 flex items-center gap-2 overflow-x-auto whitespace-nowrap py-1 sm:mt-10">
+<nav class="mt-6 flex min-w-0 max-w-full items-center gap-2 overflow-x-auto whitespace-nowrap py-1 sm:mt-10">
   {current > 1 && (
     <a
       href={withBase(current === 2 ? "" : `page/${current - 1}/`)}

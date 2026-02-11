@@ -6,6 +6,19 @@
   color-scheme: light;
 }
 
+html,
+body {
+  width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 body {
   @apply bg-slate-50 text-slate-900 antialiased;
   font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif;
@@ -16,6 +29,7 @@ body {
     radial-gradient(circle at 20% 20%, rgba(31, 142, 241, 0.15), transparent 45%),
     radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.2), transparent 40%),
     linear-gradient(180deg, #f6f8fb, #eef2f8 60%, #ffffff 100%);
+  overflow-x: clip;
 }
 
 .glass-panel {
