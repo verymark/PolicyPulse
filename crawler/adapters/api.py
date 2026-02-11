@@ -4,6 +4,8 @@ import logging
 import os
 from typing import Any
 
+import httpx
+
 from ..models import SourceDefinition
 from ..utils import fetch_json
 
