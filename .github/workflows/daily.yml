@@ -60,6 +60,7 @@ jobs:
           python -m crawler validate
 
       - name: Crawl summary
+        shell: bash
         run: |
           if [[ -f data/news.jsonl ]]; then
             TOTAL_COUNT=$(wc -l < data/news.jsonl | tr -d ' ')
@@ -68,56 +69,11 @@ jobs:
           fi
           NEW_COUNT=$((TOTAL_COUNT - PREV_COUNT))
           echo "Crawl summary: new=${NEW_COUNT} total=${TOTAL_COUNT}"
+
           {
             echo "Crawl summary: new=${NEW_COUNT} total=${TOTAL_COUNT}"
-            python - <<'PY'
-import json
-from pathlib import Path
-
-index_path = Path("data/index.json")
-if not index_path.exists():
-    print("\nNo index.json available for per-source stats.")
-    raise SystemExit(0)
-
-payload = json.loads(index_path.read_text(encoding="utf-8"))
-stats = payload.get("last_run", {}).get("sources", {})
-if not stats:
-    print("\nNo per-source stats recorded.")
-else:
-    print("\nPer-source stats:")
-        print("| Source | Fetched | New | Skipped | Status | Failure Streak | Zero New Streak | Last Run |")
-        print("| --- | ---: | ---: | ---: | --- | ---: | ---: | --- |")
-        for source_id in sorted(stats.keys()):
-          info = stats[source_id]
-        print(
-            "| {source} | {fetched} | {new} | {skipped} | {status} | {failure} | {zero_new} | {last_run} |".format(
-              source=source_id,
-              fetched=info.get("fetched", 0),
-              new=info.get("new", 0),
-              skipped=info.get("skipped", 0),
-              status=info.get("status", ""),
-              failure=info.get("failure_streak", 0),
-              zero_new=info.get("zero_new_streak", 0),
-              last_run=info.get("last_run", ""),
-            )
-        )
-
-alerts = payload.get("alerts", [])
-if alerts:
-    print("\nAlerts:")
-    for alert in alerts:
-          print(
-            "- {source}: {alert_type} (streak={streak}) {message} last_run={last_run} last_error={last_error}".format(
-              source=alert.get("source_id"),
-              alert_type=alert.get("type"),
-              streak=alert.get("streak"),
-              message=alert.get("message", ""),
-              last_run=alert.get("last_run", ""),
-              last_error=alert.get("last_error", ""),
-            )
-          )
-PY
-          } >> $GITHUB_STEP_SUMMARY
+            python -m crawler.gh_summary data/index.json
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit data if changed
         run: |
