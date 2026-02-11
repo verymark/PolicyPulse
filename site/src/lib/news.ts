@@ -58,6 +58,34 @@ export function getNewsPage(page: number, perPage = 30) {
   };
 }
 
+export function getLatestBySource(limitPerSource = 6) {
+  const items = loadNews();
+  const perSource: Record<
+    string,
+    { id: string; name: string; items: NewsItem[]; latest: string }
+  > = {};
+
+  for (const item of items) {
+    const bucket = perSource[item.source_id];
+    if (!bucket) {
+      perSource[item.source_id] = {
+        id: item.source_id,
+        name: item.source_name || item.source_id,
+        items: [item],
+        latest: item.published_at,
+      };
+      continue;
+    }
+
+    if (bucket.items.length >= limitPerSource) {
+      continue;
+    }
+    bucket.items.push(item);
+  }
+
+  return Object.values(perSource).sort((a, b) => b.latest.localeCompare(a.latest));
+}
+
 export function getSourcesSummary() {
   const items = loadNews();
   const summary: Record<string, { name: string; count: number }> = {};

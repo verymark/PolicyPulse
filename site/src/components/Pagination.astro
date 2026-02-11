@@ -2,12 +2,12 @@
 const { current, total } = Astro.props;
 const pages = Array.from({ length: total }, (_, index) => index + 1);
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${path}`;
+const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
 ---
 <nav class="mt-10 flex flex-wrap items-center gap-2">
   {current > 1 && (
     <a
-      href={withBase(current === 2 ? "" : `page/${current - 1}`)}
+      href={withBase(current === 2 ? "" : `page/${current - 1}/`)}
       class="rounded-full border border-ink-900/10 px-4 py-2 text-sm text-ink-900/70 hover:border-ink-900/30"
     >
       Prev
@@ -15,7 +15,7 @@ const withBase = (path) => `${baseUrl}${path}`;
   )}
   {pages.map((page) => (
     <a
-      href={withBase(page === 1 ? "" : `page/${page}`)}
+      href={withBase(page === 1 ? "" : `page/${page}/`)}
       class={`rounded-full px-4 py-2 text-sm ${
         page === current
           ? "bg-ink-900 text-white"
@@ -27,7 +27,7 @@ const withBase = (path) => `${baseUrl}${path}`;
   ))}
   {current < total && (
     <a
-      href={withBase(`page/${current + 1}`)}
+      href={withBase(`page/${current + 1}/`)}
       class="rounded-full border border-ink-900/10 px-4 py-2 text-sm text-ink-900/70 hover:border-ink-900/30"
     >
       Next

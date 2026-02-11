@@ -25,9 +25,9 @@ const sourceName = items[0]?.source_name || sourceId;
         No data yet for this source.
       </div>
     ) : (
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <div class="mt-6">
         {items.map((item) => (
-          <NewsCard item={item} />
+          <NewsCard item={item} density="compact" />
         ))}
       </div>
     )}

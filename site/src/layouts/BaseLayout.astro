@@ -6,7 +6,7 @@ const pageTitle = title ? `${title} | PolicyPulse` : "PolicyPulse";
 const pageDescription =
   description || "Official-source financial policy and macro data pulse.";
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${path}`;
+const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
 ---
 <!doctype html>
 <html lang="zh-CN">
@@ -33,7 +33,7 @@ const withBase = (path) => `${baseUrl}${path}`;
         </div>
         <nav class="flex items-center gap-6 text-sm text-ink-900/70">
           <a href={withBase("")} class="hover:text-ink-950">Latest</a>
-          <a href={withBase("sources")} class="hover:text-ink-950">Sources</a>
+          <a href={withBase("sources/")} class="hover:text-ink-950">Sources</a>
         </nav>
       </header>
 

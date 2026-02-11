@@ -5,7 +5,7 @@ import { getSourcesSummary, getSourceStatusMap } from "../lib/news";
 const sources = getSourcesSummary();
 const statusMap = getSourceStatusMap();
 const baseUrl = import.meta.env.BASE_URL;
-const withBase = (path) => `${baseUrl}${path}`;
+const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
 ---
 <BaseLayout title="Sources" description="Browse official sources">
   <section class="glass-panel rounded-3xl px-6 py-8 shadow-soft">
@@ -31,7 +31,7 @@ const withBase = (path) => `${baseUrl}${path}`;
           const statusLine = statusParts.join(" · ");
           return (
           <a
-            href={withBase(`source/${source.id}`)}
+            href={withBase(`source/${source.id}/`)}
             class="flex items-center justify-between rounded-2xl border border-ink-900/10 bg-white/70 px-5 py-4 text-sm text-ink-900/80 shadow-soft transition hover:-translate-y-1 hover:border-ink-900/30"
           >
             <div>

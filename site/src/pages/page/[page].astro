@@ -29,9 +29,9 @@ const { items, totalPages, currentPage, totalItems } = getNewsPage(page);
         No data yet. Enable sources in crawler/sources_config.yaml and run the crawler.
       </div>
     ) : (
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <div class="mt-6">
         {items.map((item) => (
-          <NewsCard item={item} />
+          <NewsCard item={item} density="compact" />
         ))}
       </div>
     )}
