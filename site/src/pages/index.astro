@@ -4,6 +4,8 @@ import NewsCard from "../components/NewsCard.astro";
 import Pagination from "../components/Pagination.astro";
 import {
   classifyTopics,
+  classifyEventType,
+  EVENT_LABELS,
   getLatestBySource,
   getLatestByTopic,
   getNewsPage,
@@ -55,6 +57,9 @@ const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
                       rel="noopener noreferrer"
                       class="hover:text-accent-600"
                     >
+                      <span class="mr-2 rounded bg-ink-900/10 px-1.5 py-0.5 text-[10px] text-ink-900/70">
+                        {EVENT_LABELS[classifyEventType(item)]}
+                      </span>
                       {item.title}
                     </a>
                   </li>
@@ -88,6 +93,9 @@ const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
                       rel="noopener noreferrer"
                       class="hover:text-accent-600"
                     >
+                      <span class="mr-2 rounded bg-ink-900/10 px-1.5 py-0.5 text-[10px] text-ink-900/70">
+                        {EVENT_LABELS[classifyEventType(item)]}
+                      </span>
                       {item.title}
                     </a>
                   </li>
@@ -109,6 +117,7 @@ const withBase = (path) => `${baseUrl}${String(path ?? "").replace(/^\//, "")}`;
             item={item}
             density="compact"
             topics={classifyTopics(item).map((t) => TOPIC_LABELS[t])}
+            eventTypeLabel={EVENT_LABELS[classifyEventType(item)]}
           />
         ))}
       </div>

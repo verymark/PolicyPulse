@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NewsCard from "../../components/NewsCard.astro";
-import { classifyTopics, loadNews, TOPIC_LABELS } from "../../lib/news";
+import { classifyEventType, classifyTopics, EVENT_LABELS, loadNews, TOPIC_LABELS } from "../../lib/news";
 
 export function getStaticPaths() {
   const items = loadNews();
@@ -31,6 +31,7 @@ const sourceName = items[0]?.source_name || sourceId;
             item={item}
             density="compact"
             topics={classifyTopics(item).map((t) => TOPIC_LABELS[t])}
+            eventTypeLabel={EVENT_LABELS[classifyEventType(item)]}
           />
         ))}
       </div>

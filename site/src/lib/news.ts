@@ -121,6 +121,23 @@ export const TOPIC_LABELS: Record<TopicId, string> = {
   trade_industry: "贸易/产业",
 };
 
+export type EventTypeId =
+  | "policy"
+  | "data"
+  | "regulation"
+  | "speech"
+  | "operations"
+  | "risk";
+
+export const EVENT_LABELS: Record<EventTypeId, string> = {
+  policy: "政策",
+  data: "数据",
+  regulation: "监管",
+  speech: "讲话",
+  operations: "操作",
+  risk: "风险",
+};
+
 function includesAny(haystack: string, needles: string[]) {
   return needles.some((needle) => haystack.includes(needle));
 }
@@ -332,6 +349,136 @@ export function classifyTopics(item: NewsItem): TopicId[] {
     "trade_industry",
   ];
   return ordered.filter((t) => topics.has(t));
+}
+
+export function classifyEventType(item: NewsItem): EventTypeId {
+  const title = (item.title || "").toLowerCase();
+  const summary = (item.summary || "").toLowerCase();
+  const sourceId = (item.source_id || "").toLowerCase();
+  const contentType = (item.content_type || "").toLowerCase();
+  const text = `${title}\n${summary}\n${contentType}`;
+
+  // Source priors.
+  if (sourceId === "nbs") {
+    return "data";
+  }
+
+  // Regulation first (often very specific signals).
+  if (
+    includesAny(text, [
+      "regulation",
+      "supervision",
+      "guideline",
+      "compliance",
+      "rule",
+      "consultation",
+      "enforcement",
+      "监管",
+      "监督",
+      "条例",
+      "办法",
+      "征求意见",
+      "合规",
+      "行政处罚",
+    ])
+  ) {
+    return "regulation";
+  }
+
+  // Macro / data releases.
+  if (
+    includesAny(text, [
+      "cpi",
+      "ppi",
+      "gdp",
+      "employment",
+      "unemployment",
+      "retail sales",
+      "industrial production",
+      "pmi",
+      "inflation",
+      "macro data",
+      "发布",
+      "公布",
+      "统计",
+      "国内生产总值",
+      "就业",
+      "失业",
+      "社融",
+      "信贷",
+      "进出口",
+      "工业",
+      "零售",
+    ])
+  ) {
+    return "data";
+  }
+
+  // Speeches / remarks.
+  if (
+    includesAny(text, [
+      "speech",
+      "remarks",
+      "testimony",
+      "press conference",
+      "statement",
+      "minutes",
+      "讲话",
+      "发言",
+      "致辞",
+      "记者会",
+      "声明",
+      "纪要",
+    ])
+  ) {
+    return "speech";
+  }
+
+  // Market operations.
+  if (
+    includesAny(text, [
+      "repo",
+      "reverse repo",
+      "rrr",
+      "reserve requirement",
+      "mlf",
+      "omo",
+      "auction",
+      "liquidity",
+      "公开市场",
+      "逆回购",
+      "准备金",
+      "流动性",
+      "操作",
+    ])
+  ) {
+    return "operations";
+  }
+
+  // Risk.
+  if (
+    includesAny(text, [
+      "financial stability",
+      "stress",
+      "risk",
+      "crisis",
+      "resolution",
+      "default",
+      "金融稳定",
+      "风险",
+      "处置",
+      "违约",
+    ])
+  ) {
+    return "risk";
+  }
+
+  // Default to policy for central-bank / official communications.
+  if (["pboc", "federal_reserve", "ecb", "boe", "safe"].includes(sourceId)) {
+    return "policy";
+  }
+
+  return "policy";
 }
 
 export function getLatestByTopic(limitPerTopic = 10) {
