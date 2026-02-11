@@ -101,8 +101,6 @@ Source definitions live in `crawler/sources/` (one module per source). Runtime s
   - List page: https://www.mof.gov.cn/zhengwuxinxi/zhengcefabu/
 - Bank for International Settlements (BIS) press releases (RSS)
   - Feed: https://www.bis.org/doclist/all_pressrels.rss
-- International Energy Agency (IEA) news
-  - List page: https://www.iea.org/news
 - State Administration of Foreign Exchange (SAFE) news
   - List page: https://www.safe.gov.cn/safe/whxw/index.html
 - People's Bank of China (PBoC) news
@@ -178,6 +176,7 @@ If a required secret is missing, the crawler will skip that source and continue.
 ## Disabled sources (HTML/RSS not stable)
 
 - SSE, SZSE, BSE: primary disclosure pages are JS-rendered and rely on internal JSON endpoints. We avoid headless browsers in this repo, so these stay disabled until stable RSS or documented JSON endpoints are added.
+- IEA: returns HTTP 403 on GitHub-hosted runners, so it is disabled by default.
 
 ## Enable GitHub Pages
 

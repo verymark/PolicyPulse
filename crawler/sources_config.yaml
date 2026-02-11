@@ -235,8 +235,8 @@ sources:
       items_path: ""
       field_map: {}
   iea:
-    enabled: true
-    notes: "IEA news list: https://www.iea.org/news"
+    enabled: false
+    notes: "IEA news list: https://www.iea.org/news (blocked with 403 on GitHub-hosted runners)"
     config:
       list_urls:
         - "https://www.iea.org/news"
