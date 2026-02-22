@@ -16,10 +16,10 @@ settings:
 sources:
   pboc:
     enabled: true
-    notes: "Official news list: https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html"
+    notes: "Official news list: https://www.pbc.gov.cn/diaochatongjisi/116219/116225/index.html"
     config:
       list_urls:
-        - "https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/index.html"
+        - "https://www.pbc.gov.cn/diaochatongjisi/116219/116225/index.html"
       base_url: "https://www.pbc.gov.cn/"
       item_selector: "table tr td"
       title_selector: "a[istitle='true']"
