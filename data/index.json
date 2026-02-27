@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-02-26T03:32:14.894211+00:00",
-  "total": 288,
+  "generated_at": "2026-02-27T03:29:01.460056+00:00",
+  "total": 293,
   "sources": {
-    "ecb": 34,
-    "bis": 27,
+    "boe": 54,
+    "ecb": 36,
+    "bis": 28,
     "federal_reserve": 28,
-    "boe": 52,
     "pboc": 43,
     "nbs": 17,
     "mof_state_council": 26,
@@ -14,7 +14,7 @@
     "csrc": 18
   },
   "last_run": {
-    "completed_at": "2026-02-26T03:32:14.894226+00:00",
+    "completed_at": "2026-02-27T03:29:01.460074+00:00",
     "sources": {
       "pboc": {
         "fetched": 23,
@@ -22,8 +22,8 @@
         "skipped": 23,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 4,
-        "last_run": "2026-02-26T03:31:51.787316+00:00",
+        "zero_new_streak": 5,
+        "last_run": "2026-02-27T03:28:35.898958+00:00",
         "last_error": null
       },
       "nbs": {
@@ -32,8 +32,8 @@
         "skipped": 15,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 5,
-        "last_run": "2026-02-26T03:31:56.642286+00:00",
+        "zero_new_streak": 6,
+        "last_run": "2026-02-27T03:28:45.298512+00:00",
         "last_error": null
       },
       "safe": {
@@ -42,8 +42,8 @@
         "skipped": 20,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 5,
-        "last_run": "2026-02-26T03:31:59.455377+00:00",
+        "zero_new_streak": 6,
+        "last_run": "2026-02-27T03:28:48.945391+00:00",
         "last_error": null
       },
       "csrc": {
@@ -52,8 +52,8 @@
         "skipped": 18,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 19,
-        "last_run": "2026-02-26T03:32:01.957616+00:00",
+        "zero_new_streak": 20,
+        "last_run": "2026-02-27T03:28:51.374552+00:00",
         "last_error": null
       },
       "mof_state_council": {
@@ -62,8 +62,8 @@
         "skipped": 25,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 5,
-        "last_run": "2026-02-26T03:32:05.131467+00:00",
+        "zero_new_streak": 6,
+        "last_run": "2026-02-27T03:28:55.104344+00:00",
         "last_error": null
       },
       "federal_reserve": {
@@ -72,28 +72,28 @@
         "skipped": 20,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 1,
-        "last_run": "2026-02-26T03:32:06.323359+00:00",
+        "zero_new_streak": 2,
+        "last_run": "2026-02-27T03:28:56.230600+00:00",
         "last_error": null
       },
       "ecb": {
         "fetched": 15,
-        "new": 1,
-        "skipped": 14,
+        "new": 2,
+        "skipped": 13,
         "status": "success",
         "failure_streak": 0,
         "zero_new_streak": 0,
-        "last_run": "2026-02-26T03:32:08.200891+00:00",
+        "last_run": "2026-02-27T03:28:57.676811+00:00",
         "last_error": null
       },
       "boe": {
         "fetched": 50,
-        "new": 0,
-        "skipped": 50,
+        "new": 2,
+        "skipped": 48,
         "status": "success",
         "failure_streak": 0,
-        "zero_new_streak": 5,
-        "last_run": "2026-02-26T03:32:10.290824+00:00",
+        "zero_new_streak": 0,
+        "last_run": "2026-02-27T03:28:58.958171+00:00",
         "last_error": null
       },
       "bis": {
@@ -103,7 +103,7 @@
         "status": "success",
         "failure_streak": 0,
         "zero_new_streak": 0,
-        "last_run": "2026-02-26T03:32:13.890682+00:00",
+        "last_run": "2026-02-27T03:29:00.456392+00:00",
         "last_error": null
       }
     }
@@ -112,52 +112,52 @@
     "sources": {
       "pboc": {
         "failure_streak": 0,
-        "zero_new_streak": 4,
-        "last_status": "success",
-        "last_error": null,
-        "last_run": "2026-02-26T03:31:51.787316+00:00"
-      },
-      "nbs": {
-        "failure_streak": 0,
         "zero_new_streak": 5,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:31:56.642286+00:00"
+        "last_run": "2026-02-27T03:28:35.898958+00:00"
+      },
+      "nbs": {
+        "failure_streak": 0,
+        "zero_new_streak": 6,
+        "last_status": "success",
+        "last_error": null,
+        "last_run": "2026-02-27T03:28:45.298512+00:00"
       },
       "federal_reserve": {
         "failure_streak": 0,
-        "zero_new_streak": 1,
+        "zero_new_streak": 2,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:06.323359+00:00"
+        "last_run": "2026-02-27T03:28:56.230600+00:00"
       },
       "ecb": {
         "failure_streak": 0,
         "zero_new_streak": 0,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:08.200891+00:00"
+        "last_run": "2026-02-27T03:28:57.676811+00:00"
       },
       "safe": {
         "failure_streak": 0,
-        "zero_new_streak": 5,
+        "zero_new_streak": 6,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:31:59.455377+00:00"
+        "last_run": "2026-02-27T03:28:48.945391+00:00"
       },
       "boe": {
         "failure_streak": 0,
-        "zero_new_streak": 5,
+        "zero_new_streak": 0,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:10.290824+00:00"
+        "last_run": "2026-02-27T03:28:58.958171+00:00"
       },
       "csrc": {
         "failure_streak": 0,
-        "zero_new_streak": 19,
+        "zero_new_streak": 20,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:01.957616+00:00"
+        "last_run": "2026-02-27T03:28:51.374552+00:00"
       },
       "nfra": {
         "failure_streak": 0,
@@ -168,10 +168,10 @@
       },
       "mof_state_council": {
         "failure_streak": 0,
-        "zero_new_streak": 5,
+        "zero_new_streak": 6,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:05.131467+00:00"
+        "last_run": "2026-02-27T03:28:55.104344+00:00"
       },
       "fred": {
         "failure_streak": 0,
@@ -192,7 +192,7 @@
         "zero_new_streak": 0,
         "last_status": "success",
         "last_error": null,
-        "last_run": "2026-02-26T03:32:13.890682+00:00"
+        "last_run": "2026-02-27T03:29:00.456392+00:00"
       },
       "iea": {
         "failure_streak": 1,
@@ -207,44 +207,37 @@
     {
       "source_id": "pboc",
       "type": "zero_new_streak",
-      "streak": 4,
+      "streak": 5,
       "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:31:51.787316+00:00"
+      "last_run": "2026-02-27T03:28:35.898958+00:00"
     },
     {
       "source_id": "nbs",
       "type": "zero_new_streak",
-      "streak": 5,
+      "streak": 6,
       "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:31:56.642286+00:00"
+      "last_run": "2026-02-27T03:28:45.298512+00:00"
     },
     {
       "source_id": "safe",
       "type": "zero_new_streak",
-      "streak": 5,
+      "streak": 6,
       "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:31:59.455377+00:00"
-    },
-    {
-      "source_id": "boe",
-      "type": "zero_new_streak",
-      "streak": 5,
-      "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:32:10.290824+00:00"
+      "last_run": "2026-02-27T03:28:48.945391+00:00"
     },
     {
       "source_id": "csrc",
       "type": "zero_new_streak",
-      "streak": 19,
+      "streak": 20,
       "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:32:01.957616+00:00"
+      "last_run": "2026-02-27T03:28:51.374552+00:00"
     },
     {
       "source_id": "mof_state_council",
       "type": "zero_new_streak",
-      "streak": 5,
+      "streak": 6,
       "message": "No new items in consecutive runs. Check selectors or endpoint.",
-      "last_run": "2026-02-26T03:32:05.131467+00:00"
+      "last_run": "2026-02-27T03:28:55.104344+00:00"
     }
   ]
 }
